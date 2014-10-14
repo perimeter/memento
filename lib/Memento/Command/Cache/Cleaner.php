@@ -18,7 +18,18 @@ class Cleaner extends Command
     {
         $output->writeln("Cleaning expired keys from memento cache dir");
 
+<<<<<<< Updated upstream
         $path = realpath(dirname(__FILE__) . '/../../../../cache/');
+=======
+        $path = $input->getArgument('path');
+        if (empty($path)) {
+            $path = sys_get_temp_dir() . '/memento';
+        } else {
+            $path = realpath($input->getArgument('path'));
+        }
+
+        $output->writeln(sprintf("Cleaning expired keys from memento cache dir '%s'", $path));
+>>>>>>> Stashed changes
 
         $directory = new \RecursiveDirectoryIterator($path, \FilesystemIterator::SKIP_DOTS);
         $iterator = new \RecursiveIteratorIterator($directory);
