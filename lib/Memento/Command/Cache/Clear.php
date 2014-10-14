@@ -16,9 +16,6 @@ class Clear extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-<<<<<<< Updated upstream
-        $output->writeln("Clearing memento cache dir");
-=======
         $path = $input->getArgument('path');
         if (empty($path)) {
             $path = sys_get_temp_dir() . '/memento';
@@ -27,9 +24,7 @@ class Clear extends Command
         }
 
         $output->writeln(sprintf("Clearing memento cache dir '%s'", $path));
->>>>>>> Stashed changes
 
-        $path = realpath(dirname(__FILE__) . '/../../../../cache');
         $cmd = sprintf("rm -rf %s/*", $path);
         `$cmd`;
 
